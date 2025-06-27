@@ -4,14 +4,16 @@ import {getValueColors} from '~/utils/colors-getter'
 import DonutChart from '~/components/DonutChart.vue'
 import { onMounted } from 'vue'
 import { useGammeStore } from '../../store/useGamme'
-
+import { useEnvStore } from '~~/store/useEnv'
+import { useRouter } from '#app'
 
 
 const appConfig = useAppConfig()
 const gammeStore = useGammeStore()
+const envStore = useEnvStore()
+const router = useRouter()
 
-const env = ref(['OVH-PREPROD', 'OVH-PROD','OVH-DEV','SCW-STAGING', 'SCW-PROD', 'SCW-DEV'])
-const currentEnv = ref('OVH-PROD')
+
 
 const GammeData = ref<echarts.PieSeriesOption['data']>([])
 const EnvironnementData = ref<echarts.PieSeriesOption['data']>([])
@@ -90,10 +92,14 @@ GruData.value = [
 
 })
 
-const colors = getGammeColors(gammeStore.currentGamme.toLowerCase())
-const bgColor = computed(() =>
-`bg-[var(--color-${gammeStore.currentGamme.toLowerCase()}-extralight)]`
-)
+function onGammeSegmentClick(params: any) {
+  const gammeName = (params?.name)
+  if (gammeName) {
+    router.push(`/status/${gammeName.toLowerCase()}`)
+  }
+}
+
+
 </script>
   
 
@@ -102,7 +108,14 @@ const bgColor = computed(() =>
 <template>
 
   <UDashboardPanel id="accueil" >
-    <template #header >
+  
+      <template #header >
+      <UBanner 
+        :title="`Environnement actuel : ${envStore.getNormalizedEnv()}`" 
+        :class="envStore.getColorByEnv()"
+        :icon="envStore.getIconByEnv()"
+/>
+
       <UDashboardNavbar :class="`bg-[var(--color-${gammeStore.currentGamme.toLowerCase()}-extralight)]`">
         <template #title>
           <span :class="`text-[var(--color-${gammeStore.currentGamme.toLowerCase()}-medium)] font-bold`">Accueil</span>
@@ -115,15 +128,14 @@ const bgColor = computed(() =>
           <div class="flex items-center gap-4" >
             <USelectMenu v-model="gammeStore.currentGamme" :items="gammeStore.gamme" class="w-24 font-semibold"  />
 
-            <USelectMenu v-model="currentEnv" :items="env" class="w-32 font-semibold" />
+            <USelectMenu v-model="envStore.currentEnv" :items="envStore.env" class="w-32 font-semibold" />
           </div>
         </template> 
       </UDashboardNavbar>
     </template>
 
-
     <template #body>
-      <UContainer class="space-y-6"  >
+      <UContainer class="space-y-6 text-black" >
         <!-- INTRO -->
         <UCard>
           <h2 class="text-xl font-bold mb-2">Bienvenue sur Skynet</h2>
@@ -158,6 +170,7 @@ const bgColor = computed(() =>
           :data="GammeData"
           width="300px"
           height="300px"
+          @segment-click="onGammeSegmentClick"
         />
       </div>
     </div>

@@ -1,22 +1,50 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from '@nuxt/ui'
 import { useGammeStore } from '../../store/useGamme'
+import { useEnvStore } from '~~/store/useEnv'
 import { color } from 'chart.js/helpers'
 
 const gammeStore = useGammeStore()
+const envStore = useEnvStore()
 const route = useRoute()
 const toast = useToast()
 
 const open = ref(false)
 
+watchEffect(() => {
+  if (process.client) {
+  document.documentElement.style.setProperty(
+    '--ui-primary',
+    `var(--color-${gammeStore.currentGamme.toLowerCase()}-dark)`
+  )
+  document.documentElement.style.setProperty(
+    '--ui-text-dimmed',
+    `var(--color-${gammeStore.currentGamme.toLowerCase()}-light)`
+  )
+  document.documentElement.style.setProperty(
+    '--ui-text-highlighted',
+    `var(--color-${gammeStore.currentGamme.toLowerCase()}-dark)`
+  )
+  document.documentElement.style.setProperty(
+    '--ui-bg-elevated',
+    `var(--color-${gammeStore.currentGamme.toLowerCase()}-extralight)`
+  )
+  document.documentElement.style.setProperty(
+    '--ui-text',
+    `var(--color-${gammeStore.currentGamme.toLowerCase()}-dark)`
+  )
+  }
+})
+
+
 const links = computed(() => {
-  const color = `text-[var(--color-${gammeStore.currentGamme.toLowerCase()}-medium)]`
+  const color = `text-[var(--color-${gammeStore.currentGamme.toLowerCase()}-light)]`
 
   return [[
     {
       label: 'Accueil',
       icon: 'i-lucide-house',
-      class: color,
+      class: `text-[var(--color-${gammeStore.currentGamme.toLowerCase()}-dark)]`,
       to: '/',
       onSelect: () => { open.value = false }
     },
@@ -30,7 +58,7 @@ const links = computed(() => {
       children: [
         {
           label: 'Global',
-          to: '/dasboard',
+          to: '/dashboard',
           exact: true,
           class: color,
           onSelect: () => { open.value = false }
@@ -48,6 +76,7 @@ const links = computed(() => {
       label: 'Installations',
       icon: 'icon-park-solid:install',
       class: color,
+      iconClass:  `${color} `,
       to: '/Installations',
       onSelect: () => { open.value = false }
     },
@@ -169,10 +198,14 @@ onMounted(async () => {
     <div class="text-[var(--color-scw-dark)]"></div>
   </div>
 
+  
+
+
 
   <UDashboardGroup unit="rem" >
 
-   
+
+
     <UDashboardSidebar
       id="default"
       v-model:open="open"
@@ -185,14 +218,12 @@ onMounted(async () => {
       <template #header="{ collapsed }">
         
         <TeamsMenu :collapsed="collapsed"
-        tooltip
          />
       </template>
 
       <template #default="{ collapsed }" >
 
         <UDashboardSearchButton :collapsed="collapsed" class="bg-transparent ring-default" :class="`text-[var(--color-${gammeStore.currentGamme.toLowerCase()}-medium)]`"/>
-          <span :class="`text-[var(--color-${gammeStore.currentGamme.toLowerCase()}-medium)]`">TEST</span>
         <UNavigationMenu
           :collapsed="collapsed"
           :items="links[0]"
@@ -201,8 +232,8 @@ onMounted(async () => {
           popover
           :ui="{
           icon: 'transition-colors duration-200',
-          inactiveIcon: `text-[var(--color-${gammeStore.currentGamme.toLowerCase()}-medium)]`,
-          activeIcon: `text-[var(--color-${gammeStore.currentGamme.toLowerCase()}-dark)]`
+          inactiveIcon: `text-[var(--color-${gammeStore.currentGamme.toLowerCase()}-medium)] group-hover:text-[var(--color-${gammeStore.currentGamme.toLowerCase()}-dark)]`,
+          activeIcon: `text-[var(--color-${gammeStore.currentGamme.toLowerCase()}-dark)] group-hover:text-[var(--color-${gammeStore.currentGamme.toLowerCase()}-dark)]`
           }"
           
         />

@@ -18,6 +18,9 @@ let chartInstance: echarts.ECharts | null = null
 const getLegendTextColor = () =>
   colorMode.value === 'dark' ? '#ffffff' : '#222222'
 
+  const emit = defineEmits<{
+  (e: 'segment-click', params: any): void
+}>()
 
 const renderChart = () => {
   if (!chartRef.value) return
@@ -76,6 +79,11 @@ const renderChart = () => {
       }
     ]
   })
+
+  chartInstance.on('click', (params) => {
+    emit('segment-click', params)
+  })
+  
 }
 
 onMounted(() => {
