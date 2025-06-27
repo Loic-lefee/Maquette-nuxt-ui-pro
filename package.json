@@ -18,13 +18,17 @@
     "@unovis/ts": "^1.5.2",
     "@unovis/vue": "^1.5.2",
     "@vueuse/nuxt": "^13.3.0",
+    "chart": "^0.1.2",
+    "chart.js": "^4.5.0",
     "date-fns": "^4.1.0",
     "nuxt": "^3.17.5",
+    "pinia": "^3.0.3",
     "zod": "^3.25.57"
   },
   "devDependencies": {
     "@nuxt/eslint": "^1.4.1",
     "eslint": "^9.28.0",
+    "nuxt-echarts": "^0.3.3",
     "typescript": "^5.8.3",
     "vue-tsc": "^2.2.10"
   },
@@ -37,6 +41,10 @@
       "esbuild",
       "maplibre-gl",
       "vue-demi"
+    ],
+    "onlyBuiltDependencies": [
+      "@tailwindcss/oxide",
+      "unrs-resolver"
     ]
   },
   "packageManager": "pnpm@10.12.1"

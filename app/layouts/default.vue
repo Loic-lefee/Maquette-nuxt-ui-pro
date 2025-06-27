@@ -1,142 +1,210 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from '@nuxt/ui'
+import { useGammeStore } from '../../store/useGamme'
+import { color } from 'chart.js/helpers'
 
+const gammeStore = useGammeStore()
 const route = useRoute()
 const toast = useToast()
 
 const open = ref(false)
 
-const links = [[{
-  label: 'Home',
-  icon: 'i-lucide-house',
-  to: '/',
-  onSelect: () => {
-    open.value = false
-  }
-}, {
-  label: 'Inbox',
-  icon: 'i-lucide-inbox',
-  to: '/inbox',
-  badge: '4',
-  onSelect: () => {
-    open.value = false
-  }
-}, {
-  label: 'Customers',
-  icon: 'i-lucide-users',
-  to: '/customers',
-  onSelect: () => {
-    open.value = false
-  }
-}, {
-  label: 'Settings',
-  to: '/settings',
-  icon: 'i-lucide-settings',
-  defaultOpen: true,
-  type: 'trigger',
-  children: [{
-    label: 'General',
-    to: '/settings',
-    exact: true,
-    onSelect: () => {
-      open.value = false
-    }
-  }, {
-    label: 'Members',
-    to: '/settings/members',
-    onSelect: () => {
-      open.value = false
-    }
-  }, {
-    label: 'Notifications',
-    to: '/settings/notifications',
-    onSelect: () => {
-      open.value = false
-    }
-  }, {
-    label: 'Security',
-    to: '/settings/security',
-    onSelect: () => {
-      open.value = false
-    }
-  }]
-}], [{
-  label: 'Feedback',
-  icon: 'i-lucide-message-circle',
-  to: 'https://github.com/nuxt-ui-pro/dashboard',
-  target: '_blank'
-}, {
-  label: 'Help & Support',
-  icon: 'i-lucide-info',
-  to: 'https://github.com/nuxt/ui-pro',
-  target: '_blank'
-}]] satisfies NavigationMenuItem[][]
+const links = computed(() => {
+  const color = `text-[var(--color-${gammeStore.currentGamme.toLowerCase()}-medium)]`
 
-const groups = computed(() => [{
-  id: 'links',
-  label: 'Go to',
-  items: links.flat()
-}, {
-  id: 'code',
-  label: 'Code',
-  items: [{
-    id: 'source',
-    label: 'View page source',
-    icon: 'i-simple-icons-github',
-    to: `https://github.com/nuxt-ui-pro/dashboard/blob/main/app/pages${route.path === '/' ? '/index' : route.path}.vue`,
-    target: '_blank'
-  }]
-}])
+  return [[
+    {
+      label: 'Accueil',
+      icon: 'i-lucide-house',
+      class: color,
+      to: '/',
+      onSelect: () => { open.value = false }
+    },
+    {
+      label: 'Tableau de bord',
+      icon: 'ic:outline-space-dashboard',
+      class: color,
+      to: '/dashboard',
+      defaultOpen: true,
+      type: 'trigger',
+      children: [
+        {
+          label: 'Global',
+          to: '/dasboard',
+          exact: true,
+          class: color,
+          onSelect: () => { open.value = false }
+        },
+        {
+          label: 'Mono Client',
+          to: '/dasboard/client',
+          exact: true,
+          class: color,
+          onSelect: () => { open.value = false }
+        }
+      ]
+    },
+    {
+      label: 'Installations',
+      icon: 'icon-park-solid:install',
+      class: color,
+      to: '/Installations',
+      onSelect: () => { open.value = false }
+    },
+    {
+      label: 'Etat des services',
+      icon: 'pajamas:dashboard',
+      class: color,
+      to: '/status',
+      onSelect: () => { open.value = false }
+    },
+    {
+      label: 'Quick Connect',
+      icon: 'material-symbols:person-rounded',
+      class: color,
+      to: '/qconnect',
+      onSelect: () => { open.value = false }
+    },
+    {
+      label: 'Settings',
+      icon: 'i-lucide-settings',
+      class: color,
+      to: '/settings',
+      defaultOpen: true,
+      type: 'trigger',
+      children: [
+        {
+          label: 'General',
+          to: '/settings',
+          exact: true,
+          class: color,
+          onSelect: () => { open.value = false }
+        },
+        {
+          label: 'Members',
+          to: '/settings/members',
+          class: color,
+          onSelect: () => { open.value = false }
+        },
+        {
+          label: 'Notifications',
+          to: '/settings/notifications',
+          class: color,
+          onSelect: () => { open.value = false }
+        }
+      ]
+    }
+  ],
+  [
+    {
+      label: 'Feedback',
+      icon: 'i-lucide-message-circle',
+      class: color,
+      to: 'https://github.com/nuxt-ui-pro/dashboard',
+      target: '_blank'
+    },
+    {
+      label: 'Help & Support',
+      icon: 'i-lucide-info',
+      class: color,
+      to: 'https://github.com/nuxt/ui-pro',
+      target: '_blank'
+    }
+  ]]
+}) ///satisfies NavigationMenuItem[][]
+
 
 onMounted(async () => {
-  const cookie = useCookie('cookie-consent')
-  if (cookie.value === 'accepted') {
-    return
-  }
 
-  toast.add({
-    title: 'We use first-party cookies to enhance your experience on our website.',
-    duration: 0,
-    close: false,
-    actions: [{
-      label: 'Accept',
-      color: 'neutral',
-      variant: 'outline',
-      onClick: () => {
-        cookie.value = 'accepted'
-      }
-    }, {
-      label: 'Opt out',
-      color: 'neutral',
-      variant: 'ghost'
-    }]
-  })
 })
 </script>
 
 <template>
-  <UDashboardGroup unit="rem">
+
+  <div class="hidden">
+    <div class="bg-[var(--color-secu-light)]"></div>
+    <div class="bg-[var(--color-secu-medium)]"></div>
+    <div class="bg-[var(--color-secu-dark)]"></div>
+    <div class="bg-[var(--color-secu-extralight)]"></div>
+    <div class="bg-[var(--color-pop-light)]"></div>
+    <div class="bg-[var(--color-pop-medium)]"></div>
+    <div class="bg-[var(--color-pop-dark)]"></div>
+    <div class="bg-[var(--color-pop-extralight)]"></div>
+    <div class="bg-[var(--color-dom-light)]"></div>
+    <div class="bg-[var(--color-dom-medium)]"></div>
+    <div class="bg-[var(--color-dom-dark)]"></div>
+    <div class="bg-[var(--color-dom-extralight)]"></div>
+    <div class="bg-[var(--color-gru-light)]"></div>
+    <div class="bg-[var(--color-gru-medium)]"></div>
+    <div class="bg-[var(--color-gru-dark)]"></div>
+    <div class="bg-[var(--color-gru-extralight)]"></div>
+    <div class="bg-[var(--color-ovh-light)]"></div>
+    <div class="bg-[var(--color-ovh-medium)]"></div>
+    <div class="bg-[var(--color-ovh-dark)]"></div>
+    <div class="bg-[var(--color-scw-light)]"></div>
+    <div class="bg-[var(--color-scw-medium)]"></div>
+    <div class="bg-[var(--color-scw-dark)]"></div>
+
+    <div class="text-[var(--color-secu-light)]"></div>
+    <div class="text-[var(--color-secu-medium)]"></div>
+    <div class="text-[var(--color-secu-dark)]"></div>
+    <div class="text-[var(--color-secu-extralight)]"></div>
+    <div class="text-[var(--color-pop-light)]"></div>
+    <div class="text-[var(--color-pop-medium)]"></div>
+    <div class="text-[var(--color-pop-dark)]"></div>
+    <div class="text-[var(--color-pop-extralight)]"></div>
+    <div class="text-[var(--color-dom-light)]"></div>
+    <div class="text-[var(--color-dom-medium)]"></div>
+    <div class="text-[var(--color-dom-dark)]"></div>
+    <div class="text-[var(--color-dom-extralight)]"></div>
+    <div class="text-[var(--color-gru-light)]"></div>
+    <div class="text-[var(--color-gru-medium)]"></div>
+    <div class="text-[var(--color-gru-dark)]"></div>
+    <div class="text-[var(--color-gru-extralight)]"></div>
+    <div class="text-[var(--color-ovh-light)]"></div>
+    <div class="text-[var(--color-ovh-medium)]"></div>
+    <div class="text-[var(--color-ovh-dark)]"></div>
+    <div class="text-[var(--color-scw-light)]"></div>
+    <div class="text-[var(--color-scw-medium)]"></div>
+    <div class="text-[var(--color-scw-dark)]"></div>
+  </div>
+
+
+  <UDashboardGroup unit="rem" >
+
+   
     <UDashboardSidebar
       id="default"
       v-model:open="open"
       collapsible
       resizable
-      class="bg-elevated/25"
-      :ui="{ footer: 'lg:border-t lg:border-default' }"
+      :ui="{footer: 'lg:border-t lg:border-default',
+      }"
+      :class="`bg-[var(--color-${gammeStore.currentGamme.toLowerCase()}-extralight)]`"
     >
       <template #header="{ collapsed }">
-        <TeamsMenu :collapsed="collapsed" />
+        
+        <TeamsMenu :collapsed="collapsed"
+        tooltip
+         />
       </template>
 
-      <template #default="{ collapsed }">
-        <UDashboardSearchButton :collapsed="collapsed" class="bg-transparent ring-default" />
+      <template #default="{ collapsed }" >
 
+        <UDashboardSearchButton :collapsed="collapsed" class="bg-transparent ring-default" :class="`text-[var(--color-${gammeStore.currentGamme.toLowerCase()}-medium)]`"/>
+          <span :class="`text-[var(--color-${gammeStore.currentGamme.toLowerCase()}-medium)]`">TEST</span>
         <UNavigationMenu
           :collapsed="collapsed"
           :items="links[0]"
           orientation="vertical"
           tooltip
           popover
+          :ui="{
+          icon: 'transition-colors duration-200',
+          inactiveIcon: `text-[var(--color-${gammeStore.currentGamme.toLowerCase()}-medium)]`,
+          activeIcon: `text-[var(--color-${gammeStore.currentGamme.toLowerCase()}-dark)]`
+          }"
+          
         />
 
         <UNavigationMenu
@@ -149,13 +217,12 @@ onMounted(async () => {
       </template>
 
       <template #footer="{ collapsed }">
-        <UserMenu :collapsed="collapsed" />
+        <UserMenu :collapsed="collapsed"/>
       </template>
+    
     </UDashboardSidebar>
 
-    <UDashboardSearch :groups="groups" />
-
-    <slot />
+  <slot />
 
     <NotificationsSlideover />
   </UDashboardGroup>

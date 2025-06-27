@@ -1,18 +1,34 @@
-@import "tailwindcss" theme(static);
+@import "tailwindcss";
 @import "@nuxt/ui-pro";
 
-@theme static {
-  --font-sans: 'Public Sans', sans-serif;
-
-  --color-green-50: #EFFDF5;
-  --color-green-100: #D9FBE8;
-  --color-green-200: #B3F5D1;
-  --color-green-300: #75EDAE;
-  --color-green-400: #00DC82;
-  --color-green-500: #00C16A;
-  --color-green-600: #00A155;
-  --color-green-700: #007F45;
-  --color-green-800: #016538;
-  --color-green-900: #0A5331;
-  --color-green-950: #052E16;
+/* Déclaration des gammes de couleurs */
+:root {
+  /* Sécurité (Bleu) */
+  --color-secu-extralight: #e5f3fa;
+  --color-secu-light: #49A4D8;
+  --color-secu-medium: #2D7FB0;
+  --color-secu-dark: #125887;
+  /* Population (Vert) */
+  --color-pop-extralight: #E3F1F0;
+  --color-pop-light: #4CC6AD;
+  --color-pop-medium: #50B8A8;
+  --color-pop-dark: #1A908A;
+  /* Relation Usagers (Rouge) */
+  --color-gru-extralight: #FCE7E8;
+  --color-gru-light: #FF7D7D;
+  --color-gru-medium: #F76666;
+  --color-gru-dark: #DF4949;
+  /* Domaine public (Jaune) */
+  --color-dom-extralight: #FEF4E9;
+  --color-dom-light: #F9C03D;
+  --color-dom-medium: #F19F2D;
+  --color-dom-dark: #DB8D22;
+  /* OVH */
+  --color-ovh-light: #5DA9E9;
+  --color-ovh-medium: #1C64F2;
+  --color-ovh-dark: #0B2F66;
+  /* Scaleway */
+  --color-scw-light: #CDBDFF;
+  --color-scw-medium: #7B47FF;
+  --color-scw-dark: #3E1C75;
 }

@@ -1,9 +1,11 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+
 export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
     '@nuxt/ui-pro',
-    '@vueuse/nuxt'
+    '@vueuse/nuxt',
+    'nuxt-echarts',
   ],
 
   devtools: {
@@ -12,10 +14,18 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
+  ui: {
+
+  },
+
   routeRules: {
     '/api/**': {
       cors: true
     }
+  },
+
+  alias: {
+
   },
 
   future: {
@@ -31,5 +41,11 @@ export default defineNuxtConfig({
         braceStyle: '1tbs'
       }
     }
+  },
+
+  echarts: {
+    renderer: ['svg', 'canvas'],
+    charts: ['BarChart'],
+    components: ['DatasetComponent', 'GridComponent', 'TooltipComponent'],
   }
 })
