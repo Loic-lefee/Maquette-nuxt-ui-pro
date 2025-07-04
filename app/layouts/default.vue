@@ -1,13 +1,15 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from '@nuxt/ui'
-import { useGammeStore } from '../../store/useGamme'
+import { useGammeStore } from '~~/store/useGamme'
 import { useEnvStore } from '~~/store/useEnv'
 import { color } from 'chart.js/helpers'
+import { usePageTitle } from '~~/app/utils/getPageTitle'
 
 const gammeStore = useGammeStore()
 const envStore = useEnvStore()
 const route = useRoute()
 const toast = useToast()
+const { pageTitle } = usePageTitle()
 
 const open = ref(false)
 
@@ -19,7 +21,7 @@ watchEffect(() => {
   )
   document.documentElement.style.setProperty(
     '--ui-text-dimmed',
-    `var(--color-${gammeStore.currentGamme.toLowerCase()}-light)`
+    `var(--color-${gammeStore.currentGamme.toLowerCase()}-medium)`
   )
   document.documentElement.style.setProperty(
     '--ui-text-highlighted',
@@ -32,6 +34,21 @@ watchEffect(() => {
   document.documentElement.style.setProperty(
     '--ui-text',
     `var(--color-${gammeStore.currentGamme.toLowerCase()}-dark)`
+  )
+
+  document.documentElement.style.setProperty(
+    '--ui-border-accented',
+    `var(--color-${gammeStore.currentGamme.toLowerCase()}-dark)`
+  )
+  
+  document.documentElement.style.setProperty(
+    '--ui-border',
+    `var(--color-${gammeStore.currentGamme.toLowerCase()}-medium)`
+  )
+
+  document.documentElement.style.setProperty(
+    '--ui-text-muted',
+    `--ui-text-black`
   )
   }
 })
@@ -65,7 +82,7 @@ const links = computed(() => {
         },
         {
           label: 'Mono Client',
-          to: '/dasboard/client',
+          to: '/dashboard/client',
           exact: true,
           class: color,
           onSelect: () => { open.value = false }
@@ -148,9 +165,11 @@ onMounted(async () => {
 })
 </script>
 
+  
+  
 <template>
 
-  <div class="hidden">
+    <div class="hidden">
     <div class="bg-[var(--color-secu-light)]"></div>
     <div class="bg-[var(--color-secu-medium)]"></div>
     <div class="bg-[var(--color-secu-dark)]"></div>
@@ -196,15 +215,15 @@ onMounted(async () => {
     <div class="text-[var(--color-scw-light)]"></div>
     <div class="text-[var(--color-scw-medium)]"></div>
     <div class="text-[var(--color-scw-dark)]"></div>
+    <div class="bg-red-600"></div>
+    <div class="bg-purple-600"></div> 
+    <div class="bg-indigo-500"></div>
   </div>
-
-  
-
 
 
   <UDashboardGroup unit="rem" >
-
-
+  
+      
 
     <UDashboardSidebar
       id="default"
@@ -252,9 +271,39 @@ onMounted(async () => {
       </template>
     
     </UDashboardSidebar>
+    <div class="flex flex-col flex-1 min-h-screen " >
+        
+    <div class="sticky top-0 z-50">
+      <UBanner 
+        :title="`Environnement actuel : ${envStore.getNormalizedEnv()}`" 
+        :class="envStore.getColorByEnv()"
+        :icon="envStore.getIconByEnv()"
+/>
 
+      <UDashboardNavbar :class="`bg-[var(--color-${gammeStore.currentGamme.toLowerCase()}-extralight)]`">
+        <template #title>
+          <span :class="`text-[var(--color-${gammeStore.currentGamme.toLowerCase()}-medium)] font-bold`">{{  pageTitle }} </span>
+        </template>
+        <template #leading>
+          <UDashboardSidebarCollapse :class="`text-[var(--color-${gammeStore.currentGamme.toLowerCase()}-medium)] font-bold`" />
+        </template>
+
+        <template #right>
+          <div class="flex items-center gap-4" >
+            <USelectMenu v-model="gammeStore.currentGamme" :items="gammeStore.gamme" class="w-24 font-semibold"  />
+
+            <USelectMenu v-model="envStore.currentEnv" :items="envStore.env" class="w-32 font-semibold" />
+          </div>
+        </template> 
+      </UDashboardNavbar>
+      </div>
+    
+    
   <slot />
+  </div>
 
     <NotificationsSlideover />
   </UDashboardGroup>
 </template>
+
+

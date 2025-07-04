@@ -80,9 +80,11 @@ const renderChart = () => {
     ]
   })
 
-  chartInstance.on('click', (params) => {
-    emit('segment-click', params)
-  })
+  
+  
+  chartInstance.on('legendselectchanged', (params) => {
+  emit('segment-click', { name: params.name })
+})
   
 }
 

@@ -6,6 +6,7 @@ export default defineNuxtConfig({
     '@nuxt/ui-pro',
     '@vueuse/nuxt',
     'nuxt-echarts',
+    //'@pinia/nuxt',
   ],
 
   devtools: {

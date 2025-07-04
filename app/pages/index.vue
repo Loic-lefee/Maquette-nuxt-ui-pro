@@ -5,13 +5,13 @@ import DonutChart from '~/components/DonutChart.vue'
 import { onMounted } from 'vue'
 import { useGammeStore } from '../../store/useGamme'
 import { useEnvStore } from '~~/store/useEnv'
-import { useRouter } from '#app'
+import { useRoute } from 'vue-router'
 
 
 const appConfig = useAppConfig()
 const gammeStore = useGammeStore()
 const envStore = useEnvStore()
-const router = useRouter()
+
 
 
 
@@ -92,10 +92,16 @@ GruData.value = [
 
 })
 
+const selectedGammes = ref<string[]>(['SECU','POP','DOM','GRU'])
+
 function onGammeSegmentClick(params: any) {
-  const gammeName = (params?.name)
-  if (gammeName) {
-    router.push(`/status/${gammeName.toLowerCase()}`)
+  const clickedGamme = params.name
+  if (selectedGammes.value?.includes(clickedGamme)) {
+    selectedGammes.value = selectedGammes.value.filter(g => g !== clickedGamme)
+    if (selectedGammes.value.length === 0) selectedGammes.value = null
+  } else {
+
+    selectedGammes.value = selectedGammes.value ? [...selectedGammes.value, clickedGamme] : [clickedGamme]
   }
 }
 
@@ -107,38 +113,13 @@ function onGammeSegmentClick(params: any) {
 
 <template>
 
-  <UDashboardPanel id="accueil" >
-  
-      <template #header >
-      <UBanner 
-        :title="`Environnement actuel : ${envStore.getNormalizedEnv()}`" 
-        :class="envStore.getColorByEnv()"
-        :icon="envStore.getIconByEnv()"
-/>
-
-      <UDashboardNavbar :class="`bg-[var(--color-${gammeStore.currentGamme.toLowerCase()}-extralight)]`">
-        <template #title>
-          <span :class="`text-[var(--color-${gammeStore.currentGamme.toLowerCase()}-medium)] font-bold`">Accueil</span>
-        </template>
-        <template #leading>
-          <UDashboardSidebarCollapse :class="`text-[var(--color-${gammeStore.currentGamme.toLowerCase()}-medium)] font-bold`" />
-        </template>
-
-        <template #right>
-          <div class="flex items-center gap-4" >
-            <USelectMenu v-model="gammeStore.currentGamme" :items="gammeStore.gamme" class="w-24 font-semibold"  />
-
-            <USelectMenu v-model="envStore.currentEnv" :items="envStore.env" class="w-32 font-semibold" />
-          </div>
-        </template> 
-      </UDashboardNavbar>
-    </template>
+  <UDashboardPanel>
 
     <template #body>
       <UContainer class="space-y-6 text-black" >
         <!-- INTRO -->
         <UCard>
-          <h2 class="text-xl font-bold mb-2">Bienvenue sur Skynet</h2>
+          <h2 class="text-xl font-bold mb-2">Bienvenue sur Skynet </h2>
           <p>
             Skynet est notre outil interne de gestion dédié aux opérations techniques du service IT. 
             Il centralise l’ensemble des fonctionnalités nécessaires au suivi, au déploiement et à la maintenance de nos environnements.
@@ -169,6 +150,7 @@ function onGammeSegmentClick(params: any) {
           title="Répartition gamme"
           :data="GammeData"
           width="300px"
+          selectedMode="false" 
           height="300px"
           @segment-click="onGammeSegmentClick"
         />
@@ -203,7 +185,10 @@ function onGammeSegmentClick(params: any) {
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
     
     <!-- 1. Pie Chart 3 : SECU -->
-    <div class="flex flex-col items-center justify-center">
+     <div
+      v-if="selectedGammes && selectedGammes.includes('SECU')"
+      class="flex flex-col items-center justify-center"
+    >
       <div class="p-6">
         <DonutChart
           title="SECU"
@@ -215,7 +200,11 @@ function onGammeSegmentClick(params: any) {
       </div>
     </div>
 
-    <div class="flex flex-col items-center justify-center">
+    <!-- 1. Pie Chart 4 : GRU -->
+    <div
+      v-if="selectedGammes && selectedGammes.includes('GRU')"
+      class="flex flex-col items-center justify-center"
+    >
       <div class="p-6">
         <DonutChart
           title="GRU"
@@ -227,7 +216,11 @@ function onGammeSegmentClick(params: any) {
       </div>
     </div>
 
-    <div class="flex flex-col items-center justify-center">
+    <!-- 1. Pie Chart 4 : DOM -->
+    <div
+      v-if="selectedGammes && selectedGammes.includes('DOM')"
+      class="flex flex-col items-center justify-center"
+    >
       <div class="p-6">
         <DonutChart
           title="DOM"
@@ -238,8 +231,11 @@ function onGammeSegmentClick(params: any) {
       </div>
     </div>
 
-    <!-- 3. Pie Chart 2 : Environnements -->
-    <div class="flex flex-col items-center justify-center">
+    <!-- 1. Pie Chart 5 : POP -->
+    <div
+      v-if="selectedGammes && selectedGammes.includes('POP')"
+      class="flex flex-col items-center justify-center"
+    >
       <div class="p-6">
         <DonutChart
           title="POP"
@@ -251,6 +247,7 @@ function onGammeSegmentClick(params: any) {
     </div>
 
   </div>
+  <template #footer></template>
 </UCard>
 
         
