@@ -8,10 +8,6 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
-function goToClientPage(uuid : string) {
-  router.push(`/client/${uuid}`)
-}
-
 
 const gammeStore = useGammeStore()
 

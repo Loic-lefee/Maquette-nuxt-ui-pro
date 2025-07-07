@@ -298,8 +298,9 @@ onMounted(async () => {
       </UDashboardNavbar>
       </div>
     
-    
+    <div class="h-screen overflow-y-auto">
   <slot />
+  </div>
   </div>
 
     <NotificationsSlideover />

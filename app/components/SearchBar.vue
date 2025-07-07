@@ -1,7 +1,8 @@
 <script setup>
 import { ref, computed } from 'vue'
-import { extract_uuid_name } from '~~/app/composables/db_mock'
-import { useRouter } from 'vue-router'
+import { useMockDB } from '~~/app/composables/db_mock'
+import { useRouter, useRoute } from 'vue-router'
+
 
 
 definePageMeta({
@@ -10,9 +11,10 @@ definePageMeta({
 
 
 const router = useRouter()
+const DB = useMockDB()
+const route =useRoute()
 
-
-const rawClients = extract_uuid_name()
+const rawClients = DB.extract_uuid_name()
 
 const clients = ref(
   rawClients.map(c => ({
@@ -23,6 +25,7 @@ const clients = ref(
 
 const searchText = ref('')   // Ce que tape l'utilisateur
 const selectedValue = ref(null) // Valeur sélectionnée (uuid)
+selectedValue.value = route.params.uuid ? `${DB.findClientNameByUuid(route.params.uuid)} - ${route.params.uuid}` : null
 
 
 

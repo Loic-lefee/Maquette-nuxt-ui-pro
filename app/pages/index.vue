@@ -112,13 +112,12 @@ function onGammeSegmentClick(params: any) {
 
 
 <template>
-
   <UDashboardPanel>
 
     <template #body>
-      <UContainer class="space-y-6 text-black" >
+      <div class="space-y-6 text-black w-full px-4" >
         <!-- INTRO -->
-        <UCard>
+        <UCard class="w-full">
           <h2 class="text-xl font-bold mb-2">Bienvenue sur Skynet </h2>
           <p>
             Skynet est notre outil interne de gestion dédié aux opérations techniques du service IT. 
@@ -247,11 +246,11 @@ function onGammeSegmentClick(params: any) {
     </div>
 
   </div>
-  <template #footer></template>
+  
 </UCard>
 
         
-      </UContainer>
+</div>
     </template>
   </UDashboardPanel>
   </template>

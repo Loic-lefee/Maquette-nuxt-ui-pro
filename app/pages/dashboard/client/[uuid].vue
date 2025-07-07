@@ -2,23 +2,23 @@
 import { ULink } from '#components';
 import { useRoute } from 'vue-router'
 import SearchBar from '~/components/SearchBar.vue';
-import { getApplicationsByFamily, getApplicationsByClient } from '~~/app/composables/db_mock'
+import { useMockDB } from '~~/app/composables/db_mock'
 
 const route = useRoute()
 const uuid = computed(() => route.params.uuid)
+const DB = useMockDB()
 
 
 const clientApp = computed(() => {
-  return getApplicationsByClient(uuid.value) || []
+  return DB.getApplicationsByClient(uuid.value) || []
 })
 
 
 const appsByFamily = computed(() => {
   if (!clientApp.value || clientApp.value.length === 0) return {}
-  return getApplicationsByFamily(clientApp.value)
+  return DB.getApplicationsByFamily(clientApp.value)
 })
 
-console.log(appsByFamily.value.Applications.length)
 
 
 
