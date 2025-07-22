@@ -1,11 +1,10 @@
 import { defineStore } from 'pinia'
-import { ref, computed } from 'vue'
-import { useAppConfig } from '#app'
+import { ref } from 'vue'
+
 
 export const useGammeStore = defineStore('gamme', () => {
     const gamme = ref(['SECU', 'DOM', 'GRU', 'POP'])
     const currentGamme = ref('SECU')
-    const appConfig = useAppConfig()
 
     function getColor() {
         const colors = [`${currentGamme.value.toLowerCase()}-extralight`,

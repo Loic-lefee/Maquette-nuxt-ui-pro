@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import type { NavigationMenuItem } from '@nuxt/ui'
 import { useGammeStore } from '~~/store/useGamme'
 import { useEnvStore } from '~~/store/useEnv'
-import { color } from 'chart.js/helpers'
 import { usePageTitle } from '~~/app/utils/getPageTitle'
 
 const gammeStore = useGammeStore()
