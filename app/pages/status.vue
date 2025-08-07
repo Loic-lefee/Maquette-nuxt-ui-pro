@@ -1,4 +1,7 @@
-<script lang="ts">
-</script>
+<template>
+  <Map />
+</template>
 
-<template> <p> Work in progress</p></template>
+<script setup lang="ts">
+import Map from '~/components/Map.vue'
+</script>

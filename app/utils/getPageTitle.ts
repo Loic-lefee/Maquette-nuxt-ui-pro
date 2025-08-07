@@ -15,6 +15,8 @@ export function usePageTitle() {
                 return 'Mono-client'
             case `dashboard-client-uuid`:
                 return `Client : ${DB.findClientNameByUuid(uuid.value)} - ${uuid.value}`
+            case 'cartes':
+                return 'Cartes'
 
 
             default:

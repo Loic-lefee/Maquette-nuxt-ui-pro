@@ -3,13 +3,15 @@ import { ref, computed } from 'vue'
 import BarChart from '@/components/BarChart.vue'
 import { useGammeStore } from '~~/store/useGamme'
 import type { string } from 'zod/v4'
-import { fullData } from '~~/app/composables/db_mock'
+import { useMockDB } from '~~/app/composables/db_mock'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
 
 const gammeStore = useGammeStore()
+const mockDB = useMockDB()
+const fullData = mockDB.fullData  
 
 
 // value = sum client

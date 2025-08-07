@@ -13,7 +13,7 @@ const user = ref({
   avatar: {
     src: '',
     alt: 'Stagiaire'
-  }
+  }                   
 })
 
 const items = computed<DropdownMenuItem[][]>(() => ([[{

@@ -19,7 +19,33 @@ const appsByFamily = computed(() => {
   return DB.getApplicationsByFamily(clientApp.value)
 })
 
-
+const item = {
+      SECU: {
+            applications: [
+                {
+                    name: "secu_1",
+                    famille: "Applications",
+                    dateInstallation: "2024-01-05",
+                    statut: "Actif",
+                    dateDeploiement: "2024-01-12",
+                    versions: [
+                        {
+                            version: "1.0",
+                            clients: [
+                                { name: "Paris", uuid: "A7K", nameUrl: "paris" },
+                                { name: "Nantes", uuid: "N1T", nameUrl: "nantes" }
+                            ]
+                        },
+                        {
+                            version: "1.1",
+                            clients: [
+                                { name: "Marseille", uuid: "X2P", nameUrl: "marseille" },
+                                { name: "Lille", uuid: "L1L", nameUrl: "lille" }
+                            ]
+                        }
+                    ],
+                    value: 120
+                }]}}
 
 
 </script>

@@ -1,8 +1,10 @@
 import { useGammeStore } from "~~/store/useGamme";
+import { useEnvStore } from "~~/store/useEnv";
 
 export const useMockDB = () => {
 
     const gammeStore = useGammeStore()
+    const envStore = useEnvStore()
 
     const fullData = {
         SECU: {
@@ -16,8 +18,9 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "1.0",
+                            env: "OVH-PREPROD",
                             clients: [
-                                { name: "Paris", uuid: "A7K", nameUrl: "paris" },
+                                { name: "Paris", uuid: "A7K", nameUrl: "paris", },
                                 { name: "Nantes", uuid: "N1T", nameUrl: "nantes" }
                             ]
                         },
@@ -40,6 +43,7 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "2.0",
+                            env: "OVH-PROD",
                             clients: [
                                 { name: "Toulouse", uuid: "D3Q", nameUrl: "toulouse" },
                                 { name: "Rennes", uuid: "R3N", nameUrl: "rennes" },
@@ -58,6 +62,7 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "1.0",
+                            env: "OVH-PROD",
                             clients: [
                                 { name: "Paris", uuid: "A7K", nameUrl: "paris" },
                                 { name: "Nice", uuid: "9Z1", nameUrl: "nice" },
@@ -76,6 +81,7 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "3.0",
+                            env: "OVH-PROD",
                             clients: [
                                 { name: "Paris", uuid: "A7K", nameUrl: "paris" },
                                 { name: "Lyon", uuid: "7K9", nameUrl: "lyon" }
@@ -83,6 +89,7 @@ export const useMockDB = () => {
                         },
                         {
                             version: "3.1",
+                            env: "OVH-DEV",
                             clients: [
                                 { name: "Paris", uuid: "A7K", nameUrl: "paris" },
                                 { name: "Bordeaux", uuid: "B0D", nameUrl: "bordeaux" }
@@ -100,6 +107,7 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "1.0",
+                            env: "OVH-DEV",
                             clients: [
                                 { name: "Paris", uuid: "A7K", nameUrl: "paris" },
                                 { name: "Lyon", uuid: "7K9", nameUrl: "lyon" },
@@ -119,6 +127,7 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "2.1",
+                            env: "OVH-DEV",
                             clients: [
                                 { name: "Paris", uuid: "A7K", nameUrl: "paris" },
                                 { name: "Marseille", uuid: "X2P", nameUrl: "marseille" },
@@ -137,6 +146,7 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "1.2",
+                            env: "OVH-PROD",
                             clients: [
                                 { name: "Paris", uuid: "A7K", nameUrl: "paris" },
                                 { name: "Toulouse", uuid: "D3Q", nameUrl: "toulouse" },
@@ -145,6 +155,7 @@ export const useMockDB = () => {
                         },
                         {
                             version: "1.3",
+                            env: "OVH-DEV",
                             clients: [
                                 { name: "Paris", uuid: "A7K", nameUrl: "paris" },
                                 { name: "Strasbourg", uuid: "S7B", nameUrl: "strasbourg" }
@@ -162,6 +173,7 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "2.0",
+                            env: "OVH-PROD",
                             clients: [
                                 { name: "Paris", uuid: "A7K", nameUrl: "paris" },
                                 { name: "Nice", uuid: "9Z1", nameUrl: "nice" },
@@ -180,6 +192,7 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "1.0",
+                            env: "OVH-PROD",
                             clients: [
                                 { name: "Paris", uuid: "A7K", nameUrl: "paris" },
                                 { name: "Nantes", uuid: "N1T", nameUrl: "nantes" }
@@ -187,6 +200,7 @@ export const useMockDB = () => {
                         },
                         {
                             version: "2.0",
+                            env: "OVH-PREPROD",
                             clients: [
                                 { name: "Paris", uuid: "A7K", nameUrl: "paris" },
                                 { name: "Rennes", uuid: "R3N", nameUrl: "rennes" }
@@ -204,6 +218,7 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "1.1",
+                            env: "OVH-PROD",
                             clients: [
                                 { name: "Paris", uuid: "A7K", nameUrl: "paris" },
                                 { name: "Lyon", uuid: "7K9", nameUrl: "lyon" },
@@ -223,6 +238,7 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "1.0",
+                            env: "OVH-PROD",
                             clients: [
                                 { name: "Paris", uuid: "A7K", nameUrl: "paris" },
                                 { name: "Lyon", uuid: "7K9", nameUrl: "lyon" }
@@ -240,6 +256,7 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "1.1",
+                            env: "OVH-PROD",
                             clients: [
                                 { name: "Paris", uuid: "A7K", nameUrl: "paris" },
                                 { name: "Marseille", uuid: "X2P", nameUrl: "marseille" },
@@ -258,6 +275,7 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "2.0",
+                            env: "OVH-PROD",
                             clients: [
                                 { name: "Paris", uuid: "A7K", nameUrl: "paris" },
                                 { name: "Nice", uuid: "9Z1", nameUrl: "nice" },
@@ -276,6 +294,7 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "2.1",
+                            env: "OVH-PREPROD",
                             clients: [
                                 { name: "Paris", uuid: "A7K", nameUrl: "paris" },
                                 { name: "Toulouse", uuid: "D3Q", nameUrl: "toulouse" },
@@ -294,6 +313,7 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "3.0",
+                            env: "OVH-PREPROD",
                             clients: [
                                 { name: "Paris", uuid: "A7K", nameUrl: "paris" },
                                 { name: "Bordeaux", uuid: "B0D", nameUrl: "bordeaux" },
@@ -312,6 +332,7 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "3.1",
+                            env: "OVH-PREPROD",
                             clients: [
                                 { name: "Paris", uuid: "A7K", nameUrl: "paris" },
                                 { name: "Strasbourg", uuid: "S7B", nameUrl: "strasbourg" }
@@ -329,6 +350,7 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "1.2",
+                            env: "OVH-PREPROD",
                             clients: [
                                 { name: "Paris", uuid: "A7K", nameUrl: "paris" },
                                 { name: "Marseille", uuid: "X2P", nameUrl: "marseille" },
@@ -347,6 +369,7 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "1.3",
+                            env: "OVH-PREPROD",
                             clients: [
                                 { name: "Lille", uuid: "L1L", nameUrl: "lille" },
                                 { name: "Nantes", uuid: "N1T", nameUrl: "nantes" }
@@ -364,6 +387,7 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "2.2",
+                            env: "OVH-PREPROD",
                             clients: [
                                 { name: "Toulouse", uuid: "D3Q", nameUrl: "toulouse" },
                                 { name: "Rennes", uuid: "R3N", nameUrl: "rennes" }
@@ -381,6 +405,7 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "3.0",
+                            env: "OVH-PREPROD",
                             clients: [
                                 { name: "Bordeaux", uuid: "B0D", nameUrl: "bordeaux" },
                                 { name: "Lyon", uuid: "7K9", nameUrl: "lyon" }
@@ -399,6 +424,7 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "1.4",
+                            env: "OVH-PROD",
                             clients: [
                                 { name: "Paris", uuid: "A7K", nameUrl: "paris" },
                                 { name: "Marseille", uuid: "X2P", nameUrl: "marseille" }
@@ -433,6 +459,7 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "2.2",
+                            env: "OVH-PROD",
                             clients: [
                                 { name: "Strasbourg", uuid: "S7B", nameUrl: "strasbourg" },
                                 { name: "Nantes", uuid: "N1T", nameUrl: "nantes" }
@@ -450,6 +477,7 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "3.1",
+                            env: "OVH-PROD",
                             clients: [
                                 { name: "Toulouse", uuid: "D3Q", nameUrl: "toulouse" },
                                 { name: "Rennes", uuid: "R3N", nameUrl: "rennes" }
@@ -467,6 +495,7 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "3.2",
+                            env: "OVH-PROD",
                             clients: [
                                 { name: "Bordeaux", uuid: "B0D", nameUrl: "bordeaux" },
                                 { name: "Lyon", uuid: "7K9", nameUrl: "lyon" }
@@ -485,6 +514,7 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "2.3",
+                            env: "OVH-PROD",
                             clients: [
                                 { name: "Paris", uuid: "A7K", nameUrl: "paris" },
                                 { name: "Nantes", uuid: "N1T", nameUrl: "nantes" }
@@ -502,6 +532,7 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "2.4",
+                            env: "OVH-PROD",
                             clients: [
                                 { name: "Paris", uuid: "A7K", nameUrl: "paris" },
                                 { name: "Marseille", uuid: "X2P", nameUrl: "marseille" },
@@ -520,6 +551,7 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "1.5",
+                            env: "OVH-PROD",
                             clients: [
                                 { name: "Nice", uuid: "9Z1", nameUrl: "nice" },
                                 { name: "Strasbourg", uuid: "S7B", nameUrl: "strasbourg" }
@@ -537,6 +569,7 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "3.3",
+                            env: "OVH-PROD",
                             clients: [
                                 { name: "Toulouse", uuid: "D3Q", nameUrl: "toulouse" },
                                 { name: "Rennes", uuid: "R3N", nameUrl: "rennes" }
@@ -554,6 +587,7 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "3.4",
+                            env: "OVH-PROD",
                             clients: [
                                 { name: "Bordeaux", uuid: "B0D", nameUrl: "bordeaux" },
                                 { name: "Lyon", uuid: "7K9", nameUrl: "lyon" }
@@ -580,6 +614,7 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "1.0",
+                            env: "OVH-PROD",
                             clients: [
                                 { name: "Paris", uuid: "A7K", nameUrl: "paris" },
                                 { name: "Nice", uuid: "9Z1", nameUrl: "nice" },
@@ -598,6 +633,7 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "1.0",
+                            env: "OVH-PROD",
                             clients: [
                                 { name: "Lyon", uuid: "7K9", nameUrl: "lyon" },
                                 { name: "Strasbourg", uuid: "S7B", nameUrl: "strasbourg" }
@@ -605,6 +641,7 @@ export const useMockDB = () => {
                         },
                         {
                             version: "2.0",
+                            env: "OVH-DEV",
                             clients: [
                                 { name: "Marseille", uuid: "X2P", nameUrl: "marseille" },
                                 { name: "Lille", uuid: "L1L", nameUrl: "lille" }
@@ -622,6 +659,7 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "1.2",
+                            env: "OVH-PROD",
                             clients: [
                                 { name: "Toulouse", uuid: "D3Q", nameUrl: "toulouse" },
                                 { name: "Rennes", uuid: "R3N", nameUrl: "rennes" }
@@ -639,6 +677,7 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "2.0",
+                            env: "OVH-PROD",
                             clients: [
                                 { name: "Nice", uuid: "9Z1", nameUrl: "nice" },
                                 { name: "Bordeaux", uuid: "B0D", nameUrl: "bordeaux" }
@@ -656,6 +695,7 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "1.0",
+                            env: "OVH-PROD",
                             clients: [
                                 { name: "Paris", uuid: "A7K", nameUrl: "paris" },
                                 { name: "Nantes", uuid: "N1T", nameUrl: "nantes" }
@@ -663,6 +703,7 @@ export const useMockDB = () => {
                         },
                         {
                             version: "1.1",
+                            env: "OVH-DEV",
                             clients: [
                                 { name: "Lille", uuid: "L1L", nameUrl: "lille" }
                             ]
@@ -679,6 +720,7 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "2.1",
+                            env: "OVH-PROD",
                             clients: [
                                 { name: "Paris", uuid: "A7K", nameUrl: "paris" },
                                 { name: "Lyon", uuid: "7K9", nameUrl: "lyon" },
@@ -697,6 +739,7 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "2.2",
+                            env: "OVH-PROD",
                             clients: [
                                 { name: "Toulouse", uuid: "D3Q", nameUrl: "toulouse" },
                                 { name: "Rennes", uuid: "R3N", nameUrl: "rennes" }
@@ -714,6 +757,7 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "1.3",
+                            env: "OVH-PROD",
                             clients: [
                                 { name: "Marseille", uuid: "X2P", nameUrl: "marseille" },
                                 { name: "Bordeaux", uuid: "B0D", nameUrl: "bordeaux" }
@@ -737,6 +781,7 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "1.0",
+                            env: "OVH-PROD",
                             clients: [
                                 { name: "Paris", uuid: "A7K", nameUrl: "paris" },
                                 { name: "Lille", uuid: "L1L", nameUrl: "lille" }
@@ -760,6 +805,7 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "2.0",
+                            env: "OVH-PROD",
                             clients: [
                                 { name: "Toulouse", uuid: "D3Q", nameUrl: "toulouse" },
                                 { name: "Nantes", uuid: "N1T", nameUrl: "nantes" }
@@ -777,6 +823,7 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "1.0",
+                            env: "OVH-PROD",
                             clients: [
                                 { name: "Nice", uuid: "9Z1", nameUrl: "nice" }
                             ]
@@ -793,6 +840,7 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "1.1",
+                            env: "OVH-PROD",
                             clients: [
                                 { name: "Paris", uuid: "A7K", nameUrl: "paris" },
                                 { name: "Strasbourg", uuid: "S7B", nameUrl: "strasbourg" }
@@ -810,6 +858,7 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "1.0",
+                            env: "OVH-PROD",
                             clients: [
                                 { name: "Lyon", uuid: "7K9", nameUrl: "lyon" },
                                 { name: "Rennes", uuid: "R3N", nameUrl: "rennes" }
@@ -827,6 +876,7 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "1.3",
+                            env: "OVH-PROD",
                             clients: [
                                 { name: "Marseille", uuid: "X2P", nameUrl: "marseille" },
                                 { name: "Bordeaux", uuid: "B0D", nameUrl: "bordeaux" }
@@ -844,6 +894,7 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "1.0",
+                            env: "OVH-PROD",
                             clients: [
                                 { name: "Toulouse", uuid: "D3Q", nameUrl: "toulouse" },
                                 { name: "Nantes", uuid: "N1T", nameUrl: "nantes" }
@@ -861,6 +912,7 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "2.0",
+                            env: "OVH-PROD",
                             clients: [
                                 { name: "Nice", uuid: "9Z1", nameUrl: "nice" },
                                 { name: "Lille", uuid: "L1L", nameUrl: "lille" }
@@ -878,6 +930,7 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "1.0",
+                            env: "OVH-PROD",
                             clients: [
                                 { name: "Strasbourg", uuid: "S7B", nameUrl: "strasbourg" },
                                 { name: "Rennes", uuid: "R3N", nameUrl: "rennes" }
@@ -901,7 +954,10 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "1.0",
-                            clients: [{ name: "Paris", uuid: "A7K", nameUrl: "paris" }]
+                            env: "OVH-PROD",
+                            clients: [
+                                { name: "Paris", uuid: "A7K", nameUrl: "paris", timezone: "Europe/Paris" }
+                            ]
                         }
                     ],
                     value: 170
@@ -915,11 +971,17 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "1.0",
-                            clients: [{ name: "Lyon", uuid: "7K9", nameUrl: "lyon" }]
+                            env: "OVH-PROD",
+                            clients: [
+                                { name: "Lyon", uuid: "7K9", nameUrl: "lyon", timezone: "Europe/Paris" }
+                            ]
                         },
                         {
                             version: "1.1",
-                            clients: [{ name: "Marseille", uuid: "X2P", nameUrl: "marseille" }]
+                            env: "OVH-DEV",
+                            clients: [
+                                { name: "Marseille", uuid: "X2P", nameUrl: "marseille", timezone: "Europe/Paris" }
+                            ]
                         }
                     ],
                     value: 140
@@ -933,7 +995,10 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "1.2",
-                            clients: [{ name: "Toulouse", uuid: "D3Q", nameUrl: "toulouse" }]
+                            env: "OVH-PROD",
+                            clients: [
+                                { name: "Toulouse", uuid: "D3Q", nameUrl: "toulouse", timezone: "Europe/Paris" }
+                            ]
                         }
                     ],
                     value: 190
@@ -947,7 +1012,10 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "2.0",
-                            clients: [{ name: "Nice", uuid: "9Z1", nameUrl: "nice" }]
+                            env: "OVH-PROD",
+                            clients: [
+                                { name: "Nice", uuid: "9Z1", nameUrl: "nice", timezone: "Europe/Paris" }
+                            ]
                         }
                     ],
                     value: 125
@@ -961,7 +1029,10 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "1.0",
-                            clients: [{ name: "Paris", uuid: "A7K", nameUrl: "paris" }]
+                            env: "OVH-PROD",
+                            clients: [
+                                { name: "Paris", uuid: "A7K", nameUrl: "paris", timezone: "Europe/Paris" }
+                            ]
                         }
                     ],
                     value: 150
@@ -975,7 +1046,10 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "1.1",
-                            clients: [{ name: "Lyon", uuid: "7K9", nameUrl: "lyon" }]
+                            env: "OVH-PROD",
+                            clients: [
+                                { name: "Lyon", uuid: "7K9", nameUrl: "lyon", timezone: "Europe/Paris" }
+                            ]
                         }
                     ],
                     value: 175
@@ -989,7 +1063,10 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "1.0",
-                            clients: [{ name: "Marseille", uuid: "X2P", nameUrl: "marseille" }]
+                            env: "OVH-PREPROD",
+                            clients: [
+                                { name: "Marseille", uuid: "X2P", nameUrl: "marseille", timezone: "Europe/Paris" }
+                            ]
                         }
                     ],
                     value: 160
@@ -1003,7 +1080,10 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "2.1",
-                            clients: [{ name: "Toulouse", uuid: "D3Q", nameUrl: "toulouse" }]
+                            env: "OVH-PREPROD",
+                            clients: [
+                                { name: "Toulouse", uuid: "D3Q", nameUrl: "toulouse", timezone: "Europe/Paris" }
+                            ]
                         }
                     ],
                     value: 185
@@ -1017,7 +1097,10 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "1.0",
-                            clients: [{ name: "Nice", uuid: "9Z1", nameUrl: "nice" }]
+                            env: "OVH-PREPROD",
+                            clients: [
+                                { name: "Nice", uuid: "9Z1", nameUrl: "nice", timezone: "Europe/Paris" }
+                            ]
                         }
                     ],
                     value: 130
@@ -1031,7 +1114,10 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "1.3",
-                            clients: [{ name: "Paris", uuid: "A7K", nameUrl: "paris" }]
+                            env: "OVH-PREPROD",
+                            clients: [
+                                { name: "Paris", uuid: "A7K", nameUrl: "paris", timezone: "Europe/Paris" }
+                            ]
                         }
                     ],
                     value: 155
@@ -1045,7 +1131,10 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "2.0",
-                            clients: [{ name: "Lyon", uuid: "7K9", nameUrl: "lyon" }]
+                            env: "OVH-PREPROD",
+                            clients: [
+                                { name: "Lyon", uuid: "7K9", nameUrl: "lyon", timezone: "Europe/Paris" }
+                            ]
                         }
                     ],
                     value: 165
@@ -1059,7 +1148,10 @@ export const useMockDB = () => {
                     versions: [
                         {
                             version: "1.0",
-                            clients: [{ name: "Marseille", uuid: "X2P", nameUrl: "marseille" }]
+                            env: "OVH-PREPROD",
+                            clients: [
+                                { name: "Marseille", uuid: "X2P", nameUrl: "marseille", timezone: "Europe/Paris" }
+                            ]
                         }
                     ],
                     value: 145

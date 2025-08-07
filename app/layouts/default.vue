@@ -110,6 +110,14 @@ const links = computed(() => {
       onSelect: () => { open.value = false }
     },
     {
+      label: 'Carte',
+      icon: 'material-symbols:map-search-sharp',
+      class : color,
+      to: '/cartes',
+      defaultOpen: true,
+      type: 'trigger',
+    },
+    {
       label: 'Settings',
       icon: 'i-lucide-settings',
       class: color,
